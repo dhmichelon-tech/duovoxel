@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DuoZoo — 20 mini colecionáveis | DuoVoxel</title>
+<meta name="description" content="DuoZoo: coleção de 20 mini animais articulados impressos em 3D pela DuoVoxel. Kits com 5, 8 e 10 unidades. Colecione!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     DuoZoo — identidade da embalagem
+     creme #FBEFDC | roxo #4E2A7E | grama #6FBF44 | rosa #EC4E8B
+     letras: teal #2BB5C4, laranja #F5821F, amarelo #FFC423,
+             verde #8CC63F, rosa #EC4E8B, azul #2E9BE0
+     ============================================================ */
+  :root {
+    --creme: #FBEFDC;
+    --roxo: #4E2A7E;
+    --roxo-claro: #6B3FA0;
+    --grama: #6FBF44;
+    --grama-escura: #57A335;
+    --rosa: #EC4E8B;
+    --rosa-escuro: #D63A78;
+    --teal: #2BB5C4;
+    --laranja: #F5821F;
+    --amarelo: #FFC423;
+    --verde: #8CC63F;
+    --azul: #2E9BE0;
+    --texto: #4E2A7E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  body {
+    font-family: "Baloo 2", "Segoe UI", system-ui, sans-serif;
+    background: #FFFDF8;
+    color: var(--texto);
+    line-height: 1.45;
+    overflow-x: hidden;
+  }
+
+  /* ---------- Hero (céu creme da embalagem) ---------- */
+  .hero {
+    background: var(--creme);
+    text-align: center;
+    padding: 36px 20px 0;
+    position: relative;
+  }
+  .hero .logo {
+    width: 110px;
+    height: auto;
+    margin-bottom: 14px;
+  }
+  /* patinhas e confetes decorativos */
+  .deco {
+    position: absolute;
+    font-size: 1.6rem;
+    opacity: .85;
+    user-select: none;
+    pointer-events: none;
+  }
+  .d1 { top: 10%; left: 8%;  color: var(--teal);    transform: rotate(-20deg); }
+  .d2 { top: 16%; right: 9%; color: var(--laranja); transform: rotate(18deg); font-size: 2rem; }
+  .d3 { top: 42%; left: 4%;  color: var(--rosa);    transform: rotate(12deg); font-size: 1.2rem; }
+  .d4 { top: 50%; right: 5%; color: var(--roxo);    transform: rotate(-14deg); font-size: 1.3rem; }
+
+  /* wordmark DuoZoo com letras coloridas e contorno roxo */
+  .duozoo {
+    font-size: clamp(3.2rem, 14vw, 6.5rem);
+    font-weight: 800;
+    letter-spacing: .01em;
+    line-height: 1;
+    -webkit-text-stroke: 2px var(--roxo);
+    text-shadow:
+      3px 3px 0 var(--roxo),
+      -2px 2px 0 var(--roxo),
+      2px -2px 0 var(--roxo),
+      -2px -2px 0 var(--roxo),
+      5px 6px 0 rgba(78, 42, 126, .35);
+  }
+  .duozoo .l1 { color: var(--teal); }
+  .duozoo .l2 { color: var(--laranja); }
+  .duozoo .l3 { color: var(--amarelo); }
+  .duozoo .l4 { color: var(--verde); }
+  .duozoo .l5 { color: var(--rosa); }
+  .duozoo .l6 { color: var(--azul); }
+
+  .tagline {
+    margin-top: 12px;
+    font-size: clamp(1.05rem, 3.6vw, 1.35rem);
+    font-weight: 700;
+    color: var(--roxo);
+  }
+  .contador {
+    display: inline-block;
+    margin: 18px 0 8px;
+    background: var(--roxo);
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 3px dashed rgba(255,255,255,.55);
+    font-size: 1rem;
+  }
+
+  /* colinas + grama (transição do hero) */
+  .colinas { display: block; width: 100%; height: auto; margin-top: 18px; }
+
+  /* ---------- Seções ---------- */
+  main { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  section { padding: 44px 0 36px; }
+  h2 {
+    font-size: clamp(1.7rem, 5.5vw, 2.3rem);
+    font-weight: 800;
+    text-align: center;
+    color: var(--roxo);
+  }
+  .sub {
+    text-align: center;
+    color: var(--roxo-claro);
+    font-weight: 600;
+    margin: 4px 0 30px;
+  }
+
+  /* ---------- Grid dos 20 ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+  .personagem {
+    background: #fff;
+    border-radius: 22px;
+    padding: 14px 10px 12px;
+    text-align: center;
+    border: 3px solid #F0E6D6;
+    box-shadow: 0 3px 0 #EADFCB;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .personagem:hover { transform: translateY(-4px) rotate(-1deg); }
+  /* cada card ganha uma cor da coleção no hover e no número */
+  .grid .personagem:nth-child(6n+1) { --cor: var(--teal); }
+  .grid .personagem:nth-child(6n+2) { --cor: var(--laranja); }
+  .grid .personagem:nth-child(6n+3) { --cor: var(--amarelo); }
+  .grid .personagem:nth-child(6n+4) { --cor: var(--verde); }
+  .grid .personagem:nth-child(6n+5) { --cor: var(--rosa); }
+  .grid .personagem:nth-child(6n)   { --cor: var(--azul); }
+  .personagem:hover { border-color: var(--cor); }
+
+  .personagem .foto {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+    background: var(--creme);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .personagem .foto img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .misterio {
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    background: var(--cor);
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 0 rgba(78,42,126,.3);
+    user-select: none;
+  }
+  .personagem .numero {
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    color: var(--cor);
+  }
+  .personagem .nome {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--roxo);
+  }
+
+  /* ---------- Kits (badge roxo + fita rosa da embalagem) ---------- */
+  #kits {
+    background: var(--creme);
+    border-radius: 34px;
+    padding: 44px 22px 40px;
+    margin-bottom: 44px;
+  }
+  .kits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    max-width: 840px;
+    margin: 0 auto;
+  }
+  .kit {
+    background: var(--roxo);
+    border-radius: 26px;
+    padding: 26px 18px 24px;
+    text-align: center;
+    color: #fff;
+    border: 3px dashed rgba(255,255,255,.5);
+    box-shadow: 0 5px 0 rgba(78,42,126,.35);
+  }
+  .kit .kit-com {
+    font-size: .95rem;
+    font-weight: 700;
+    opacity: .9;
+  }
+  .kit .qtd {
+    font-size: 3.4rem;
+    font-weight: 800;
+    line-height: 1.05;
+    color: var(--amarelo);
+  }
+  .kit .qtd-label {
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .kit a {
+    display: inline-block;
+    background: var(--rosa);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.05rem;
+    padding: 12px 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 0 var(--rosa-escuro);
+    transition: transform .12s ease;
+  }
+  .kit a:hover, .kit a:focus-visible { transform: scale(1.05); }
+  .kit a:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 3px; }
+
+  /* ---------- Rodapé (grama) ---------- */
+  footer {
+    background: var(--grama);
+    color: #fff;
+    text-align: center;
+    padding: 30px 16px 34px;
+    font-weight: 600;
+  }
+  footer .patas { font-size: 1.3rem; letter-spacing: .6em; margin-bottom: 8px; opacity: .8; }
+  footer a { color: #fff; font-weight: 800; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="deco d1">🐾</span>
+  <span class="deco d2">🐾</span>
+  <span class="deco d3">●</span>
+  <span class="deco d4">●</span>
+
+  <img class="logo" src="img/duovoxel-logo.webp" alt="DuoVoxel">
+
+  <h1 class="duozoo"><span class="l1">D</span><span class="l2">u</span><span class="l3">o</span><span class="l4">Z</span><span class="l5">o</span><span class="l6">o</span></h1>
+
+  <p class="tagline">20 mini animais articulados, impressos em 3D. Colecione!</p>
+  <span class="contador">Você encontrou os seus — conheça os 20!</span>
+
+  <!-- colinas teal/laranja + grama, como na embalagem -->
+  <svg class="colinas" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,80 Q180,20 360,70 T720,60 L720,120 L0,120 Z" fill="#2BB5C4" opacity=".85"/>
+    <path d="M720,70 Q900,15 1080,65 T1440,55 L1440,120 L720,120 Z" fill="#F5821F" opacity=".85"/>
+    <path d="M0,95 Q240,55 480,90 T960,85 T1440,90 L1440,120 L0,120 Z" fill="#6FBF44"/>
+  </svg>
+</header>
+
+<main>
+
+  <section id="colecao">
+    <h2>A coleção completa</h2>
+    <p class="sub">Cada kit vem com animais surpresa. Quais você já tem?</p>
+
+    <div class="grid">
+      <!-- ============================================================
+           CARD: para revelar um animal, troque
+           <div class="misterio">?</div>
+           por:
+           <img src="img/01.webp" alt="Nome do animal" loading="lazy">
+           e ajuste o texto em <p class="nome">.
+           ============================================================ -->
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 01</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 02</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 03</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 04</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 05</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 06</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 07</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 08</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 09</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 10</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 11</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 12</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 13</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 14</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 15</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 16</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 17</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 18</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 19</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 20</p>
+        <p class="nome">???</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="kits">
+    <h2>Monte o seu zoológico</h2>
+    <p class="sub">Escolha o tamanho do kit e comece (ou complete) a coleção.</p>
+
+    <div class="kits">
+      <!-- Troque os href="#" pelos links reais de compra
+           (Nuvemshop, Mercado Livre ou Shopee) -->
+      <div class="kit">
+        <p class="kit-com">Kit com</p>
+        <p class="qtd">5</p>
+        <p class="qtd-label">unidades</p>
+        <a href="#">Colecione</a>
+      </div>
+
+      <div class="kit">
+        <p class="kit-com">Kit com</p>
+        <p class="qtd">8</p>
+        <p class="qtd-label">unidades</p>
+        <a href="#">Colecione</a>
+      </div>
+
+      <div class="kit">
+        <p class="kit-com">Kit com</p>
+        <p class="qtd">10</p>
+        <p class="qtd-label">unidades</p>
+        <a href="#">Colecione</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="patas">🐾🐾🐾</div>
+  <p>DuoZoo é uma coleção <a href="https://www.duovoxel.com.br">DuoVoxel</a> · Impressão 3D · Rio Grande do Sul</p>
+</footer>
+
+</body>
+</html>
