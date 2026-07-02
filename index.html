@@ -11,12 +11,12 @@
 <style>
   /* ============================================================
      DuoZoo — identidade da embalagem
-     creme #FBEFDC | roxo #4E2A7E | grama #6FBF44 | rosa #EC4E8B
+     creme #FBE9D3 | roxo #4E2A7E | grama #6FBF44 | rosa #EC4E8B
      letras: teal #2BB5C4, laranja #F5821F, amarelo #FFC423,
              verde #8CC63F, rosa #EC4E8B, azul #2E9BE0
      ============================================================ */
   :root {
-    --creme: #FDEBD2;
+    --creme: #FBE9D3;
     --roxo: #4E2A7E;
     --roxo-claro: #6B3FA0;
     --grama: #6FBF44;
@@ -48,9 +48,9 @@
 
   /* ---------- Hero (céu creme da embalagem) ---------- */
   .hero {
-    background: var(--creme);
+    background: url('img/duozoo-fundo.webp') center bottom / cover no-repeat var(--creme);
     text-align: center;
-    padding: 28px 20px 0;
+    padding: 34px 20px clamp(110px, 16vw, 170px);
     position: relative;
   }
   .hero .logo {
@@ -59,13 +59,12 @@
     margin-bottom: 14px;
   }
 
-  /* wordmark DuoZoo com letras coloridas e contorno roxo */
-  /* banner DuoZoo (arte oficial em WebP, grama fecha o hero) */
-  .banner {
+  /* wordmark DuoZoo (sticker com fundo transparente) */
+  .duozoo {
     display: block;
-    width: min(860px, 100%);
+    width: min(520px, 88vw);
     height: auto;
-    margin: 0 auto;
+    margin: 4px auto 0;
   }
   h1 { font-size: 0; line-height: 0; }
 
@@ -77,6 +76,9 @@
   }
   .contador {
     display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .12s ease, background .12s ease;
     margin: 18px 0 8px;
     background: var(--roxo);
     color: #fff;
@@ -84,8 +86,14 @@
     padding: 10px 22px;
     border-radius: 999px;
     border: 3px dashed rgba(255,255,255,.55);
-    font-size: 1rem;
+    font-size: 1.35rem;
+    padding: 12px 34px;
   }
+  .contador:hover, .contador:focus-visible {
+    background: var(--roxo-claro);
+    transform: scale(1.05);
+  }
+  .contador:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 3px; }
 
   /* ---------- Seções ---------- */
   main { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
@@ -103,7 +111,7 @@
     margin: 4px 0 30px;
   }
 
-  /* ---------- Grid dos 20 ---------- */
+  /* ---------- Grid dos 24 ---------- */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -252,12 +260,12 @@
 
   <img class="logo" src="img/duovoxel-logo.webp" alt="DuoVoxel">
 
-  <p class="tagline">24 mini animais articulados, impressos em 3D. Colecione!</p>
-  <span class="contador">Você encontrou os seus? Conheça os 24!</span>
-
   <h1>
-    <img class="banner" src="img/duozoo-hero.webp" alt="DuoZoo">
+    <img class="duozoo" src="img/duozoo-logo.webp" alt="DuoZoo">
   </h1>
+
+  <p class="tagline">Mini animais articulados impressos em 3D</p>
+  <a class="contador" href="#kits">Colecione!</a>
 
 </header>
 
