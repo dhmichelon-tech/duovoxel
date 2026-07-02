@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DuoZoo — 20 mini colecionáveis | DuoVoxel</title>
-<meta name="description" content="DuoZoo: coleção de 20 mini animais articulados impressos em 3D pela DuoVoxel. Kits com 5, 8 e 10 unidades. Colecione!">
+<title>DuoZoo — 24 mini colecionáveis | DuoVoxel</title>
+<meta name="description" content="DuoZoo: coleção de 24 mini animais articulados impressos em 3D pela DuoVoxel. Kits com 5, 8 e 10 unidades. Colecione!">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
              verde #8CC63F, rosa #EC4E8B, azul #2E9BE0
      ============================================================ */
   :root {
-    --creme: #FBEFDC;
+    --creme: #FDEBD2;
     --roxo: #4E2A7E;
     --roxo-claro: #6B3FA0;
     --grama: #6FBF44;
@@ -50,7 +50,7 @@
   .hero {
     background: var(--creme);
     text-align: center;
-    padding: 36px 20px 0;
+    padding: 28px 20px 0;
     position: relative;
   }
   .hero .logo {
@@ -58,39 +58,15 @@
     height: auto;
     margin-bottom: 14px;
   }
-  /* patinhas e confetes decorativos */
-  .deco {
-    position: absolute;
-    font-size: 1.6rem;
-    opacity: .85;
-    user-select: none;
-    pointer-events: none;
-  }
-  .d1 { top: 10%; left: 8%;  color: var(--teal);    transform: rotate(-20deg); }
-  .d2 { top: 16%; right: 9%; color: var(--laranja); transform: rotate(18deg); font-size: 2rem; }
-  .d3 { top: 42%; left: 4%;  color: var(--rosa);    transform: rotate(12deg); font-size: 1.2rem; }
-  .d4 { top: 50%; right: 5%; color: var(--roxo);    transform: rotate(-14deg); font-size: 1.3rem; }
 
   /* wordmark DuoZoo com letras coloridas e contorno roxo */
-  .duozoo {
-    font-size: clamp(3.2rem, 14vw, 6.5rem);
-    font-weight: 800;
-    letter-spacing: .01em;
-    line-height: 1;
-    -webkit-text-stroke: 2px var(--roxo);
-    text-shadow:
-      3px 3px 0 var(--roxo),
-      -2px 2px 0 var(--roxo),
-      2px -2px 0 var(--roxo),
-      -2px -2px 0 var(--roxo),
-      5px 6px 0 rgba(78, 42, 126, .35);
+  /* banner DuoZoo (arte oficial em WebP, grama fecha o hero) */
+  .banner {
+    display: block;
+    width: 100%;
+    height: auto;
   }
-  .duozoo .l1 { color: var(--teal); }
-  .duozoo .l2 { color: var(--laranja); }
-  .duozoo .l3 { color: var(--amarelo); }
-  .duozoo .l4 { color: var(--verde); }
-  .duozoo .l5 { color: var(--rosa); }
-  .duozoo .l6 { color: var(--azul); }
+  h1 { font-size: 0; line-height: 0; }
 
   .tagline {
     margin-top: 12px;
@@ -109,9 +85,6 @@
     border: 3px dashed rgba(255,255,255,.55);
     font-size: 1rem;
   }
-
-  /* colinas + grama (transição do hero) */
-  .colinas { display: block; width: 100%; height: auto; margin-top: 18px; }
 
   /* ---------- Seções ---------- */
   main { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
@@ -255,31 +228,36 @@
     padding: 30px 16px 34px;
     font-weight: 600;
   }
-  footer .patas { font-size: 1.3rem; letter-spacing: .6em; margin-bottom: 8px; opacity: .8; }
+  footer .patas { display: flex; justify-content: center; gap: 18px; margin-bottom: 10px; }
   footer a { color: #fff; font-weight: 800; }
 </style>
 </head>
 <body>
 
+<!-- símbolo de patinha (usado no rodapé) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="pata" viewBox="0 0 100 100">
+      <ellipse cx="50" cy="66" rx="24" ry="20"/>
+      <ellipse cx="22" cy="42" rx="10" ry="13" transform="rotate(-22 22 42)"/>
+      <ellipse cx="41" cy="28" rx="10" ry="13" transform="rotate(-8 41 28)"/>
+      <ellipse cx="61" cy="28" rx="10" ry="13" transform="rotate(8 61 28)"/>
+      <ellipse cx="79" cy="42" rx="10" ry="13" transform="rotate(22 79 42)"/>
+    </symbol>
+  </defs>
+</svg>
+
 <header class="hero">
-  <span class="deco d1">🐾</span>
-  <span class="deco d2">🐾</span>
-  <span class="deco d3">●</span>
-  <span class="deco d4">●</span>
 
   <img class="logo" src="img/duovoxel-logo.webp" alt="DuoVoxel">
 
-  <h1 class="duozoo"><span class="l1">D</span><span class="l2">u</span><span class="l3">o</span><span class="l4">Z</span><span class="l5">o</span><span class="l6">o</span></h1>
+  <p class="tagline">24 mini animais articulados, impressos em 3D. Colecione!</p>
+  <span class="contador">Você encontrou os seus? Conheça os 24!</span>
 
-  <p class="tagline">20 mini animais articulados, impressos em 3D. Colecione!</p>
-  <span class="contador">Você encontrou os seus — conheça os 20!</span>
+  <h1>
+    <img class="banner" src="img/duozoo-hero.webp" alt="DuoZoo">
+  </h1>
 
-  <!-- colinas teal/laranja + grama, como na embalagem -->
-  <svg class="colinas" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,80 Q180,20 360,70 T720,60 L720,120 L0,120 Z" fill="#2BB5C4" opacity=".85"/>
-    <path d="M720,70 Q900,15 1080,65 T1440,55 L1440,120 L720,120 Z" fill="#F5821F" opacity=".85"/>
-    <path d="M0,95 Q240,55 480,90 T960,85 T1440,90 L1440,120 L0,120 Z" fill="#6FBF44"/>
-  </svg>
 </header>
 
 <main>
@@ -417,6 +395,30 @@
         <p class="nome">???</p>
       </div>
 
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 21</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 22</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 23</p>
+        <p class="nome">???</p>
+      </div>
+
+      <div class="personagem">
+        <div class="foto"><div class="misterio">?</div></div>
+        <p class="numero">Nº 24</p>
+        <p class="nome">???</p>
+      </div>
+
     </div>
   </section>
 
@@ -453,7 +455,11 @@
 </main>
 
 <footer>
-  <div class="patas">🐾🐾🐾</div>
+  <div class="patas" aria-hidden="true">
+    <svg width="26" height="26" style="transform:rotate(-12deg)"><use href="#pata" fill="#fff" opacity=".75"/></svg>
+    <svg width="26" height="26" style="transform:rotate(6deg)"><use href="#pata" fill="#fff" opacity=".75"/></svg>
+    <svg width="26" height="26" style="transform:rotate(-6deg)"><use href="#pata" fill="#fff" opacity=".75"/></svg>
+  </div>
   <p>DuoZoo é uma coleção <a href="https://www.duovoxel.com.br">DuoVoxel</a> · Impressão 3D · Rio Grande do Sul</p>
 </footer>
 
